@@ -1,6 +1,6 @@
 FROM ubuntu:22.04
 
-RUN apt update && apt install -y sudo
+RUN apt update && apt install -y sudo gcc
 
 WORKDIR /root
 
@@ -8,7 +8,7 @@ ENV PATH="$PATH:/usr/games"
 
 COPY .tests/ .tests/
 
-COPY .corretor corretor
+RUN gcc .tests/corretor.c -o corretor
 
 RUN chmod +x ./corretor
 
